@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Attendance</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="header">
+    <img src="company-logo.png" alt="Company Logo" class="logo">
+    <span id="currentDate"></span>
+  </div>
+
+  <div class="container">
+    <h1>Employee Attendance</h1>
+    <div class="attendance-wrapper">
+      <form id="attendanceForm" method="post" name="google-sheet">
+        
+        <label for="employeeName">Employee Name:</label>
+        <select id="employeeName" name="employeeName" required>
+          <option value="" disabled selected>Select Employee Name</option>
+          <option value="Mr. Pankaj Dutta" data-id="1" data-designation="Director" data-doj="2014-07-25">Mr. Pankaj Dutta</option>
+          <option value="Ms. Anupma Dutta" data-id="2" data-designation="Director" data-doj="2014-07-25">Ms. Anupma Dutta</option>
+          <option value="Mr. Shailender" data-id="3" data-designation="Service Engineer" data-doj="NA">Mr. Shailender</option>
+          <option value="Mr. Anuj" data-id="5" data-designation="Service Engineer" data-doj="2019-07-01">Mr. Anuj</option>
+          <option value="Mr. Sudhakar" data-id="9" data-designation="Manager-Finance" data-doj="2020-10-17">Mr. Sudhakar</option>
+          <option value="Mr. Sanjay" data-id="10" data-designation="Service Engineer" data-doj="2020-11-01">Mr. Sanjay</option>
+          <option value="Mr. Subhash" data-id="11" data-designation="Service Engineer" data-doj="2021-01-04">Mr. Subhash</option>
+          <option value="Mr. Neeraj Kumar Gupta" data-id="13" data-designation="Sales Manager" data-doj="2021-01-16">Mr. Neeraj Kumar Gupta</option>
+          <option value="Mr. Deepak " data-id="19" data-designation="IT Support" data-doj="2021-12-13">Mr. Deepak </option>
+          <option value="Mr. Jagdish" data-id="20" data-designation="Service Engineer" data-doj="2022-02-01">Mr. Jagdish</option>
+          <option value="Miss Priya" data-id="22" data-designation="Accountant" data-doj="2022-06-13">Miss Priya</option>
+          <option value="Manjeet" data-id="30" data-designation="Service Engineer" data-doj="2023-04-01">Manjeet</option>
+          <option value="Madan Kumar" data-id="31" data-designation="Office Boy" data-doj="2023-04-01">Madan Kumar</option>
+          <option value="Prashant Babu" data-id="32" data-designation="Service Engineer" data-doj="2023-05-08">Prashant Babu</option>
+          <option value="Priyanka" data-id="33" data-designation="Service Coordinator & sales" data-doj="2023-05-10">Priyanka</option>
+          <option value="Asif Ali" data-id="36" data-designation="Service Coordinator" data-doj="2023-06-09">Asif Ali</option>
+          <option value="Anoop Singh" data-id="38" data-designation="Commercial Executive" data-doj="2023-16-10">Anoop Singh </option>
+          <option value="Pramod" data-id="41" data-designation="Welder" data-doj="2024-12-02">Pramod</option>
+          <option value="Shambhu Pandit" data-id="42" data-designation="Electrician" data-doj="2024-12-02">Shambhu Pandit</option>
+          <option value="Aarti" data-id="44" data-designation="Account Exevcutive" data-doj="2022-02-22">Aarti</option>
+          <option value="Sonu" data-id="45" data-designation="Sales Executive" data-doj="2024-02-26">Sonu</option>
+          <option value="Binni Singh" data-id="46" data-designation="Branch Head" data-doj="2024-10-04">Binni Singh</option>
+          <option value="Harpreet Singh" data-id="47" data-designation="Driver" data-doj="2024-07-11">Harpreet Singh</option>
+          <!-- <option value="Abhay Singh" data-id="7" data-designation="Service Engineer" data-doj="2022-04-20">Abhay Singh</option>
+          <option value="Shah Faisal" data-id="7" data-designation="Business Head" data-doj="2022-04-20">Shah Faisal</option>
+          <option value="Anil Kumar" data-id="7" data-designation="Service Engineer" data-doj="2022-04-20">Anil Kumar</option> -->
+
+
+
+
+        </select>
+
+        <label for="employeeId">Employee ID:</label>
+        <select id="employeeId" name="employeeID" required>
+          <option value="" disabled selected>Select Employee ID</option>
+          <option value="1">0001</option>
+          <option value="2">0002</option>
+          <option value="3">0003</option>
+          <option value="5">0005</option>
+          <option value="9">0009</option>
+          <option value="10">0010</option>
+          <option value="11">0011</option>
+          <option value="13">0013</option>
+          <option value="19">0019</option>
+          <option value="20">0020</option>
+          <option value="22">0022</option>
+          <option value="30">0030</option>
+          <option value="31">0031</option>
+          <option value="32">0032</option>
+          <option value="33">0033</option>
+          <option value="36">0036</option>
+          <option value="38">0038</option>
+          <option value="41">0041</option>
+          <option value="42">0042</option>
+          <option value="44">0044</option>
+          <option value="45">0045</option>
+          <option value="46">0046</option>
+          <option value="47">0047</option>
+
+
+
+          
+        </select>
+
+
+
+
+
+
+
+
+
+        <label for="designation">Designation:</label>
+        <input type="text" id="designation" name="designation" required>
+
+        <label for="dateOfJoining">Date of Joining:</label>
+        <input type="date" id="dateOfJoining" name="dateOfJoining" readonly required>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+          <option value="Select status" disabled selected>Select status type</option>
+          <option value="Present">Present</option>
+          <option value="Absent">Absent</option>
+          <option value="WFH">WFH</option>
+          <option value="Half Day">Half Day</option>
+        </select>
+
+        <div id="timeEntries">
+          <label>Time Entries:</label>
+          <div class="time-entry">
+            <label for="inTime">In Time:</label>
+            <input type="time" class="inTime" name="inTime" required>
+            <label for="outTime">Out Time:</label>
+            <input type="time" class="outTime" name="outTime">
+          </div>
+        </div>
+
+        <button type="button" id="addTimeEntry">Add Another Time Entry</button>
+        <button type="submit" name="submit">Add Record</button>
+        <button id="resetData" type="button">Reset All Records</button>
+      </form>
+
+      <table id="attendanceTable">
+        <thead>
+          <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Date of Joining</th>
+            <th>Status</th>
+            <th>In Time</th>
+            <th>Out Time</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Attendance records will be dynamically added here -->
+        </tbody>
+      </table>
+    </div>
+
+    <button id="generatePdf">Generate PDF</button>
+    <button id="generateExcel">Generate Excel</button>
+  </div>
+
+  
+  <footer>
+    <p>Made by Shiva</p>
+  </footer>
+
+
+  <script src="scripts.js"></script>
+  <!--<script src= "https://script.google.com/macros/s/AKfycbyGmT4MVe7yXiUh7OdWYuyT_KCFzDCsII49uqjdvDf0Cm35pdz9KODtkC7xakfvxIVI/exec"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script>
+</body>
+</html>
